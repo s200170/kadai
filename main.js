@@ -2,7 +2,6 @@
 
 const express = require("express"),
     layouts = require("express-ejs-layouts"),
-    home = require("./controller/home"),
     app = express();
 
 app.set("port", process.env.PORT || 3000);
@@ -14,6 +13,11 @@ app.use(layouts);
 app.get("/", (req, res) => {
     res.render("index")
 })
+
+app.get("/news", (req, res) =>{
+    res.render("news")
+})
+
 app.get("/login", (req, res) =>{
     res.render("./login.ejs")
 })
@@ -26,7 +30,6 @@ app.post("create", (req, res) =>{
 })
 
 
-app.use(home.error);
 app.listen(app.get("port"), () =>{
     console.log(`server http://localhost:${app.get("port")}`)
 });
