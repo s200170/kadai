@@ -15,12 +15,12 @@ app.get("/", (req, res) => {
     res.render("index")
 })
 app.get("/login", (req, res) =>{
-    res.render("./users/login.ejs")
+    res.render("./login.ejs")
 })
 app.post("login", (req, res) =>{
 })
 app.get("/create", (req, res) =>{
-    res.render("./users/create.ejs")
+    res.render("./create.ejs")
 })
 app.post("create", (req, res) =>{
 })
