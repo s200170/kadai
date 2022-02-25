@@ -3,7 +3,9 @@
 const express = require("express"),
     layouts = require("express-ejs-layouts"),
     app = express(),
-    home = require("./controller/home");
+    home = require("./controller/home"),
+    thread = require("/controller/thread");
+
 
 app.set("port", process.env.PORT || 4000);
 app.set("view engine", "ejs");
@@ -11,6 +13,7 @@ app.use(express.urlencoded({extended: false}))
 
 //db
 const mongoose = require("mongoose");
+const {getAllThread} = require("./controller/thread");
 mongoose.connect(
     "mongodb://localhost:27017/kadai",
     {useNewUrlParser: true}
@@ -29,7 +32,6 @@ app.get("/", (req, res) => {
 //news
 app.get("/news", home.news);
 
-
 //study
 app.get("/study", home.study);
 
@@ -43,7 +45,7 @@ app.get("/hobby", home.hobby);
 app.get("/chat", home.chat);
 
 //thread
-app.get("/thread", home.thread);
+app.get("thread", thread.getThreadPage);
 
 //login
 app.get("/login", home.login);

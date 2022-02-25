@@ -1,5 +1,6 @@
 "use strict"
 
+
 exports.news = (req, res) => {
     res.render("news");
 };
@@ -15,9 +16,7 @@ exports.hobby = (req, res) => {
 exports.chat = (req, res) => {
     res.render("chat");
 };
-exports.thread = (req, res) => {
-    res.render("thread");
-};
+
 exports.login = (req, res) => {
     res.render("login");
 };
