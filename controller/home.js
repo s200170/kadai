@@ -23,4 +23,6 @@ exports.login = (req, res) => {
 exports.create = (req, res) => {
     res.render("create");
 };
-
+exports.thread = (req, res) => {
+    res.render("thread");
+};

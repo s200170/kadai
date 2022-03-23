@@ -1,8 +1,8 @@
 <h2>スレッド作成</h2>
-<form action="threader">
+<form action="thread" method="post">
     <div>
         <p>カテゴリー</p>
-        <select>
+        <select name="category">
             <option hidden selected>選択してください</option>
             <option value="news">ニュース</option>
             <option value="study">学問</option>
@@ -12,13 +12,13 @@
         </select>
     </div>
     <div>
-        <label>スレッド名</label>
-        <input type="text">
+        <label for="ThreadName">スレッド名</label>
+        <input type="text" name="ThreadName">
     </div>
     <div>
-        <label>メッセージ</label>
-        <textarea></textarea>
+        <label for="Message">メッセージ</label>
+        <textarea name="Message"></textarea>
     </div>
-    <button>作成</button>
+    <input type="submit" name="submit">
 </form>
 <p><a href="/">戻る</a></p>
