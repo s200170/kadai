@@ -1,34 +1,39 @@
 "use strict"
 
 const express = require("express"),
-    layouts = require("express-ejs-layouts"),
     app = express(),
-    home = require("./controller/home");
+    error = require("./controllers/error"),
+    home = require("./controllers/home"),
+    thread = require("./controllers/thread"),
+    layouts = require("express-ejs-layouts");
 
-
-app.set("port", process.env.PORT || 5000);
-app.set("view engine", "ejs");
-app.use(express.urlencoded({extended: false}))
-
-//db
 const mongoose = require("mongoose");
 mongoose.connect(
     "mongodb://localhost:27017/kadai",
-    {useNewUrlParser: true}
+    { useNewUrlParser: true }
 );
-const db = mongoose.connection;
-db.once("open", ()=>{
-    console.log("using Mongoose");
+mongoose.set("useCreateIndex", true);
+app.set("view engine", "ejs");
+app.set("port", process.env.PORT || 5000);
+app.use(
+    express.urlencoded({
+        extended:false
+    })
+);
+app.use(express.json());
+app.use(layouts);
+//top
+app.get("/", (req, res) => {
+    res.render("index");
 });
 
-//top
-app.use(layouts);
-app.get("/", (req, res) => {
-    res.render("index")
-})
 
 //news
 app.get("/news", home.news);
+app.get("/news", thread.getallnewsthread);
+app.get("/news", thread.getnewsPage);
+app.post("/news", thread.savenews);
+
 
 //study
 app.get("/study", home.study);
@@ -51,7 +56,9 @@ app.get("/login", home.login);
 //account create
 app.get("/create", home.create);
 
+//error
+app.use(error.Error);
 
 app.listen(app.get("port"), () =>{
-    console.log(`server http://localhost:${app.get("port")}`)
+    console.log(`server http://localhost:${app.get("port")}`);
 });
