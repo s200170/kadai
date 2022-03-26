@@ -31,7 +31,6 @@ app.get("/", (req, res) => {
 //news
 app.get("/news", home.news);
 app.get("/news", thread.getallnewsthread);
-app.get("/news", thread.getnewsPage);
 app.post("/news", thread.savenews);
 
 

@@ -1,9 +1,11 @@
 "use strict";
 
-const newsthread = require("../models/newsthread");
+const thread = require("../models/newsthread");
 
+
+//news
 exports.getallnewsthread = (req, res) => {
-    newsthread.find({})
+    thread.find({})
         .exec()
         .then(newsthread => {
             res.render("newsthread", {
@@ -16,16 +18,12 @@ exports.getallnewsthread = (req, res) => {
         });
 };
 
-exports.getnewsPage = (req, res) => {
-    res.render("news");
-};
-
 exports.savenews = (req, res) => {
-    let thread = new newsthread({
+    let newsthread = new thread({
         name: req.body.name,
         message: req.body.message
     });
-    thread
+    newsthread
         .save()
         .then(() => {
             res.render("news");

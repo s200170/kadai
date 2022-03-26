@@ -1,9 +1,9 @@
 "use strict"
 
 const mongoose = require("mongoose"),
-    newsthreadSchema = mongoose.Schema({
+    threadSchema = mongoose.Schema({
         name: String,
         message: String
     });
 
-module.exports = mongoose.model("newsthread", newsthreadSchema);
+module.exports = mongoose.model("newsthread", threadSchema);
