@@ -1,14 +1,18 @@
 "use strict"
-
+/*
 exports.news = (req, res) => {
     res.render("news");
-};
-exports.study = (req, res) => {
-    res.render("study");
 };
 exports.foods = (req, res) => {
     res.render("foods");
 };
+ */
+
+exports.study = (req, res) => {
+    res.render("study");
+};
+
+
 exports.hobby = (req, res) => {
     res.render("hobby");
 };

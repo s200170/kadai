@@ -5,7 +5,7 @@ const express = require("express"),
     error = require("./controllers/error"),
     home = require("./controllers/home"),
     thread = require("./controllers/thread"),
-    food = require("./controllers/foods"),
+    foods = require("./controllers/foods"),
     layouts = require("express-ejs-layouts");
 
 const mongoose = require("mongoose");
@@ -40,8 +40,8 @@ app.get("/study", home.study);
 app.post("/study", thread.savestudy);
 
 //foods
-app.get("/foods", home.foods);
-app.post("/study", food.savefoods);
+app.get("/foods", foods.getallfoodsthread);
+app.post("/study", foods.savefoods);
 
 //hobby
 app.get("/hobby", home.hobby);
