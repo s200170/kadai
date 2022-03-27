@@ -5,9 +5,11 @@ const express = require("express"),
     error = require("./controllers/error"),
     home = require("./controllers/home"),
     thread = require("./controllers/thread"),
+    food = require("./controllers/foods"),
     layouts = require("express-ejs-layouts");
 
 const mongoose = require("mongoose");
+
 mongoose.connect(
     "mongodb://localhost:27017/kadai",
     { useNewUrlParser: true }
@@ -35,15 +37,19 @@ app.post("/news", thread.savenews);
 
 //study
 app.get("/study", home.study);
+app.post("/study", thread.savestudy);
 
 //foods
 app.get("/foods", home.foods);
+app.post("/study", food.savefoods);
 
 //hobby
 app.get("/hobby", home.hobby);
+app.post("/study", thread.savehobby);
 
 //chat
 app.get("/chat", home.chat);
+app.post("/study", thread.savechat);
 
 //thread
 app.get("/thread", home.thread);
