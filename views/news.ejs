@@ -12,6 +12,13 @@
     <button id="submitButton" type="submit">送信</button>
 </form>
 <hr>
-
+<div>
+    <% news.forEach(s => { %>
+        <div>
+            <p>Name:<%= s.name %></p>
+            <p></p>
+        </div>
+    <% }); %>
+</div>
 
 
